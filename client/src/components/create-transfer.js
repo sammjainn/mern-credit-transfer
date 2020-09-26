@@ -60,7 +60,7 @@ export default class Transfer extends Component {
         .then((res) => console.log(res.data))
         .catch((err) => console.log('error'));
 
-      setTimeout(() => (window.location = '/transactions'), 2000);
+      setTimeout(() => (window.location.href = '/transactions'), 2000);
     } else {
       this.setState({ error: true });
     }
