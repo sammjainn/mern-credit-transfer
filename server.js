@@ -14,14 +14,17 @@ app.use(express.json());
 
 //DB Config
 const db = process.env.ATLAS_URI;
-
-//connecting MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Database Connected...');
+  .connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true
   })
-  .catch((err) => console.log('Database not connected', err));
+  .catch((err) => console.log(err));
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log('MongoDB database connected successfully');
+});
 
 //Routes
 app.use('/users', require('./routes/api/users'));

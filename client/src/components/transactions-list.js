@@ -18,7 +18,7 @@ export default class TransactionsList extends Component {
   }
   componentDidMount() {
     axios
-      .get('/transactions')
+      .get('./transactions')
       .then((response) => {
         console.log(response);
         this.setState({ transactions: response.data });

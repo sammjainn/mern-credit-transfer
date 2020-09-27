@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class Transfer extends Component {
   state = {
@@ -60,7 +61,7 @@ export default class Transfer extends Component {
         .then((res) => console.log(res.data))
         .catch((err) => console.log('error'));
 
-      setTimeout(() => (window.location.href = '/transactions'), 2000);
+      window.location.href = '/transactions';
     } else {
       this.setState({ error: true });
     }
@@ -106,11 +107,19 @@ export default class Transfer extends Component {
             />
           </div>
           <div className='form-group'>
-            <input
+            <Link
+              to='../transactions'
+              onClick={this.onSubmit}
+              value='Transfer money'
+              className='btn btn-primary'
+            >
+              Transfer money
+            </Link>
+            {/* <input
               type='submit'
               value='Transfer money'
               className='btn btn-primary'
-            />
+            /> */}
           </div>
         </form>
       </div>
