@@ -61,7 +61,7 @@ export default class Transfer extends Component {
         .then((res) => console.log(res.data))
         .catch((err) => console.log('error'));
 
-      window.location.href = '/transactions';
+      // window.location = '/transactions';
     } else {
       this.setState({ error: true });
     }
@@ -74,7 +74,7 @@ export default class Transfer extends Component {
         <p style={{ background: 'red' }}>
           {this.state.error ? 'Not Enough Credits' : null}
         </p>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} action='/transactions'>
           <div className='form-group'>
             <label>Send To: </label>
             <select
